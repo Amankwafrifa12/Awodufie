@@ -112,7 +112,7 @@ include("heading.php");
 
         <div class="projects-container">
 
-            <div class="project-card">
+            <div class="project-card" onclick="window.location.href='queer.php';">
 
                 <div class="project-image">
 
