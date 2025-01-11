@@ -1,241 +1,164 @@
-<!DOCTYPE html>
+<?php
+include("heading.php");
+include("header.php");
+?>
 
-<html lang="en">
+<title>Awo Dufie - Curation</title>
 
+<style>
+    /* Blog Section Styling */
 
+    .blogs-section {
 
-<head>
+        padding: 2rem;
 
-    <meta charset="UTF-8">
+        background-color: #ffffff;
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        color: #003366;
 
-    <link rel="alternate" href="https://awodufie.com" hreflang="en-us">
+    }
 
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://awodufie.com">
 
-    <meta name="description"
-        content="Awo Dufie - Human rights activist and researcher committed to advocating for justice, equality, and freedom worldwide. Explore projects, services, and research portfolio.">
 
-    <meta name="keywords" content="Awo Dufie, human rights, advocacy, equality, research, portfolio, activism">
+    .blogs-section h2 {
 
-    <meta name="author" content="Awo Dufie">
+        margin-bottom: 1.5rem;
 
-    <meta property="og:title" content="Awo Dufie - Activist & Researcher">
+        font-size: 2rem;
 
-    <meta property="og:description"
-        content="Explore Awo Dufie's projects, services, and research portfolio. Dedicated to advocating for justice, equality, and freedom worldwide.">
+        text-align: center;
 
-    <meta property="og:image" content="https://awodufie.com/img/awo-dufie.jpg">
+    }
 
-    <meta property="og:url" content="https://awodufie.com">
 
-    <meta property="og:type" content="website">
-    <link rel="icon" href="https://awodufie.com/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    .blogs-container {
 
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Awo Dufie - Activist & Researcher",
-            "description": "Explore Awo Dufie's projects, services, and research portfolio. Dedicated to advocating for justice, equality, and freedom worldwide.",
-            "url": "https://awodufie.com/curation.php"
-        }
-    </script>
+        display: flex;
 
-    <title>Awo Dufie - Curation</title>
+        flex-wrap: wrap;
 
-    <style>
-        /* General Reset */
+        gap: 1.5rem;
 
-        * {
+    }
 
-            margin: 0;
 
-            padding: 0;
 
-            box-sizing: border-box;
+    .blog-card {
 
-        }
+        display: flex;
 
+        flex: 1 1 100%;
 
+        background-color: #f0f8ff;
 
-        body {
+        border: 1px solid #ddd;
 
-            font-family: Arial, sans-serif;
+        border-radius: 10px;
 
-            line-height: 1.6;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 
-            background-color: #f9f9f9;
+        overflow: hidden;
 
-            color: #333333;
+        transition: transform 0.3s;
 
-        }
+    }
 
 
 
-        /* Header Styling */
+    .blog-card:hover {
 
-        header {
+        transform: scale(1.02);
 
-            display: flex;
+    }
 
-            justify-content: space-between;
 
-            align-items: center;
 
-            background-color: #003366;
+    .blog-image {
 
-            color: #ffffff;
+        flex: 1 1 30%;
 
-            padding: 1rem 2rem;
+        max-width: 30%;
 
-            position: sticky;
+    }
 
-            top: 0;
 
-            z-index: 1000;
 
-        }
+    .blog-image img {
 
+        width: 100%;
 
+        height: 100%;
 
-        .logo h1 {
+        object-fit: cover;
 
-            font-size: 1.5rem;
+    }
 
-        }
 
 
+    .blog-details {
 
-        .nav-links {
+        flex: 1 1 70%;
 
-            list-style: none;
+        padding: 1rem;
 
-            display: flex;
+    }
 
-            gap: 1.5rem;
 
-        }
 
+    .blog-details h3 {
 
+        margin-bottom: 0.5rem;
 
-        .nav-links li a {
+        font-size: 1.25rem;
 
-            color: #f0f0f0;
+    }
 
-            text-decoration: none;
 
-            font-size: 1rem;
 
-            transition: color 0.3s;
+    .blog-details p {
 
-        }
+        font-size: 0.9rem;
 
+        margin-bottom: 0.5rem;
 
+    }
 
-        .nav-links li a:hover {
 
-            color: #6699cc;
 
-        }
+    .blog-details .meta {
 
+        font-size: 0.8rem;
 
+        color: #666666;
 
-        .hamburger {
+        margin-bottom: 0.5rem;
 
-            display: none;
+    }
 
-            flex-direction: column;
 
-            gap: 5px;
 
-            cursor: pointer;
+    .blog-details a {
 
-        }
+        color: #003366;
 
+        text-decoration: none;
 
+        font-weight: bold;
 
-        .hamburger span {
+    }
 
-            display: block;
 
-            width: 25px;
 
-            height: 3px;
+    @media (max-width: 768px) {
 
-            background-color: #ffffff;
 
-        }
-
-
-
-        /* Blog Section Styling */
-
-        .blogs-section {
-
-            padding: 2rem;
-
-            background-color: #ffffff;
-
-            color: #003366;
-
-        }
-
-
-
-        .blogs-section h2 {
-
-            margin-bottom: 1.5rem;
-
-            font-size: 2rem;
-
-            text-align: center;
-
-        }
-
-
-
-        .blogs-container {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 1.5rem;
-
-        }
 
 
 
         .blog-card {
 
-            display: flex;
-
-            flex: 1 1 100%;
-
-            background-color: #f0f8ff;
-
-            border: 1px solid #ddd;
-
-            border-radius: 10px;
-
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-
-            overflow: hidden;
-
-            transition: transform 0.3s;
-
-        }
-
-
-
-        .blog-card:hover {
-
-            transform: scale(1.02);
+            flex-direction: column;
 
         }
 
@@ -243,21 +166,9 @@
 
         .blog-image {
 
-            flex: 1 1 30%;
+            flex: 1 1 100%;
 
-            max-width: 30%;
-
-        }
-
-
-
-        .blog-image img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
+            max-width: 100%;
 
         }
 
@@ -265,182 +176,22 @@
 
         .blog-details {
 
-            flex: 1 1 70%;
-
-            padding: 1rem;
+            flex: 1 1 100%;
 
         }
 
 
 
-        .blog-details h3 {
+    }
+</style>
 
-            margin-bottom: 0.5rem;
-
-            font-size: 1.25rem;
-
-        }
-
-
-
-        .blog-details p {
-
-            font-size: 0.9rem;
-
-            margin-bottom: 0.5rem;
-
-        }
-
-
-
-        .blog-details .meta {
-
-            font-size: 0.8rem;
-
-            color: #666666;
-
-            margin-bottom: 0.5rem;
-
-        }
-
-
-
-        .blog-details a {
-
-            color: #003366;
-
-            text-decoration: none;
-
-            font-weight: bold;
-
-        }
-
-
-
-        @media (max-width: 768px) {
-
-            .nav-links {
-
-                display: none;
-
-                flex-direction: column;
-
-                position: absolute;
-
-                top: 100%;
-
-                left: 0;
-
-                text-align: center;
-
-                background-color: #003366;
-
-                width: 100%;
-
-                padding: 1rem 0;
-
-            }
-
-
-
-            .nav-links.active {
-
-                display: flex;
-
-            }
-
-
-
-            .hamburger {
-
-                display: flex;
-
-            }
-
-
-
-            .blog-card {
-
-                flex-direction: column;
-
-            }
-
-
-
-            .blog-image {
-
-                flex: 1 1 100%;
-
-                max-width: 100%;
-
-            }
-
-
-
-            .blog-details {
-
-                flex: 1 1 100%;
-
-            }
-
-
-
-        }
-    </style>
-
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </head>
 
 
 
 <body>
-
-    <!-- Header -->
-
-    <header>
-
-        <div class="logo">
-
-            <a href="index.php" style="text-decoration: none; color: white;">
-
-                <h1>Awo Dufie</h1>
-
-            </a>
-
-        </div>
-
-        <nav>
-
-            <ul id="nav-links" class="nav-links">
-
-                <li><a href="index.php#about">About</a></li>
-
-                <li><a href="index.php#projects">Projects</a></li>
-
-                <li><a href="index.php#research">Research</a></li>
-
-                <li><a href="curation.php#curation">Curation</a></li>
-
-                <li><a href="assets/resume.pdf" target="_blank">CV</a></li>
-
-                <li><a href="index.php#contact">Contact</a></li>
-
-            </ul>
-
-            <div class="hamburger" id="hamburger">
-
-                <span></span>
-
-                <span></span>
-
-                <span></span>
-
-            </div>
-
-        </nav>
-
-    </header>
 
 
 

@@ -1,0 +1,48 @@
+/* Project Section */
+.project-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    padding: 2rem;
+    background-color: #f0f8ff;
+    color: #003366;
+}
+
+.project-text {
+    flex: 1 1 50%;
+    padding: 1rem;
+}
+
+.project-text h2 {
+    margin-bottom: 1rem;
+}
+
+.project-image {
+    flex: 1 1 50%;
+    padding: 1rem;
+    text-align: center;
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+
+}
+
+
+
+@media (max-width: 768px) {
+
+    .project-section {
+        flex-direction: column-reverse;
+    }
+
+    .project-text {
+        text-align: center;
+    }
+
+
+
+}
