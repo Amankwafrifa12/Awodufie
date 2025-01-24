@@ -1,19 +1,7 @@
 <?php
 include("heading.php");
 ?>
-
 <title>Awo Dufie - Activist & Researcher</title>
-
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Awo Dufie",
-    "description": "Explore Awo Dufie's projects, services, and research portfolio. Dedicated to advocating for justice, equality, and freedom worldwide.",
-    "url": "https://awodufie.com/"
-    "logo": "https://awodufie.com/img/awo-dufie.jpg"
-}
-</script>
 
 <style>
 
@@ -28,46 +16,92 @@ include("heading.php");
 <body>
 
     <?php include("header.php"); ?>
-    <?php include 'includes/db.php';
 
-    // Fetch data from the about_section table
-    $query = "SELECT * FROM about_section WHERE id = 1";
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-    $about = $stmt->fetch(PDO::FETCH_ASSOC);
-    ?>
 
-    <!-- Dynamic About Section -->
+    <!-- About Section -->
+
     <section id="about" class="about-section">
-        <div class="about-text">
-            <h2><?php echo htmlspecialchars($about['name']); ?></h2>
 
-            <p><?php echo nl2br(htmlspecialchars($about['description'])); ?></p>
+        <div class="about-text">
+
+            <h2>Awo Dufie Fofie (She/Ono)</h2>
+
+            <p>
+
+                Awo is a decolonial and interdisciplinary curator and scholartivist. Through a decolonial lens, her work
+
+                seeks to
+
+                <br>
+
+                I. Research, curate, and document the history of queer (nonheteronormative) people in Africa.</li>
+
+                <br> II. Document the present experiences and lives of queer (nonheteronormative) Africans.</li>
+
+                <br> III. Reimagine an equal society and future for gender-diverse, queer, and nonheteronormative
+
+                Africans.</li>
+
+
+
+            </p>
+
+
+
+
+
+
 
             <div class="social-media">
 
-                <a href="<?php echo htmlspecialchars($about['instagram_link']); ?>" class="social-icon instagram"
-                    target="_blank">
+                <!--<a href="https://www.facebook.com/yourprofile" class="social-icon facebook" target="_blank">
+
+                    <i class="material-icons"><i class="fab fa-facebook"></i></i>
+
+                </a> -->
+
+                <a href="https://www.instagram.com/dufie_awo" class="social-icon instagram" target="_blank">
+
                     <i class="material-icons"><i class="fab fa-instagram"></i></i>
+
                 </a>
-                <a href="<?php echo htmlspecialchars($about['twitter_link']); ?>" class="social-icon twitter"
-                    target="_blank">
+
+                <a href="https://x.com/awo_dufie" class="social-icon twitter" target="_blank">
+
                     <i class="material-icons"><i class="fab fa-twitter"></i></i>
+
                 </a>
-                <a href="<?php echo htmlspecialchars($about['youtube_link']); ?>" class="social-icon youtube"
-                    target="_blank">
+
+                <a href="https://www.youtube.com/@Documenting_Queerness" class="social-icon youtube" target="_blank">
+
                     <i class="material-icons"><i class="fab fa-youtube"></i></i>
+
                 </a>
-                <a href="<?php echo htmlspecialchars($about['linkedin_link']); ?>" class="social-icon linkedin"
-                    target="_blank">
-                    <i class="material-icons"><i class="fab fa-linkedin"></i></i>
+
+                <a href="https://www.linkedin.com/in/awo-dufie-54821b280/" class="social-icon linkedin" target="_blank">
+
+                    <i class="material-icons"><i class="fab fa-linkedin-in"></i></i>
+
                 </a>
+
             </div>
+
         </div>
+
+
+
         <div class="about-image">
-            <img src="<?php echo htmlspecialchars($about['image_url']); ?>" alt="About Me">
+
+            <img src="img/awo-dufie.jpg" alt="About Me">
+
         </div>
+
+
+
+
+
     </section>
+
 
 
     <!-- Projects Section -->

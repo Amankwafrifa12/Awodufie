@@ -55,21 +55,11 @@ if (isset($_SESSION['admin_id'])) { // Now checking for 'admin_id'
 
     <meta property="og:image" content="https://awodufie.com/img/awo-dufie.jpg">
 
-    <meta property="og:url" content="https://awodufie.com">
+
 
     <meta property="og:type" content="website">
     <link rel="icon" href="https://awodufie.com/favicon/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/all-style.css">
-
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Awo Dufie - Activist & Researcher",
-        "description": "Explore Awo Dufie's projects, services, and research portfolio. Dedicated to advocating for justice, equality, and freedom worldwide.",
-        "url": "https://awodufie.com/"
-    }
-    </script>
+    <link rel="stylesheet" href="css/blog.css">

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
         // Database connection
-        $conn = new mysqli('localhost', 'ekrllius_awodufie', 'UEcd5KHWwvET4FY', 'ekrllius_awodufie');
+        $conn = new mysqli('localhost', 'root', '', 'blog_db');
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }

@@ -4,6 +4,7 @@ include("heading.php");
 <title>Awo Dufie - Queer Elders Speak</title>
 <link rel="stylesheet" href="css/projects.css">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<meta property="og:url" content="https: //awodufie.com/queer.php">
 </head>
 
 <body>

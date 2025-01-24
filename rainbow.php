@@ -2,6 +2,7 @@
 include("heading.php");
 include("header.php"); ?>
 <title>Awo Dufie - Rainbow Business Directory</title>
+<meta property="og:url" content="https: //awodufie.com/rainbow.php">
 <link rel="stylesheet" href="css/projects.css">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
