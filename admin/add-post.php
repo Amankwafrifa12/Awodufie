@@ -74,132 +74,133 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Post</title>
     <style>
-        /* General body styling */
+    /* General body styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 40px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+
+    /* Form container styling */
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        box-sizing: border-box;
+    }
+
+    /* Form heading styling */
+    form h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+        text-align: center;
+    }
+
+    /* Label styling */
+    form label {
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: block;
+        color: #333;
+    }
+
+    /* Input and textarea styling */
+    form input[type="text"],
+    form textarea,
+    form input[type="file"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    form textarea {
+        height: 150px;
+        resize: vertical;
+    }
+
+    /* File input styling */
+    form input[type="file"] {
+        padding: 5px;
+    }
+
+    /* Button styling */
+    form button {
+        width: 100%;
+        padding: 12px;
+        background-color: #00509e;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+        background-color: #004080;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 40px;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            box-sizing: border-box;
+            margin: 0;
         }
 
-        /* Form container styling */
         form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            box-sizing: border-box;
+            padding: 15px;
         }
 
-        /* Form heading styling */
         form h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #333;
-            text-align: center;
+            font-size: 20px;
         }
 
-        /* Label styling */
-        form label {
+        form input[type="text"],
+        form textarea,
+        form input[type="file"],
+        form button {
             font-size: 14px;
-            margin-bottom: 5px;
-            display: block;
-            color: #333;
         }
 
-        /* Input and textarea styling */
+        /* Ensuring inputs take full width on small screens */
         form input[type="text"],
         form textarea,
         form input[type="file"] {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
             box-sizing: border-box;
         }
+    }
 
-        form textarea {
-            height: 150px;
-            resize: vertical;
+    /* Improve spacing and form element width on larger screens */
+    @media (min-width: 600px) and (max-width: 1024px) {
+        form {
+            padding: 25px;
         }
 
-        /* File input styling */
-        form input[type="file"] {
-            padding: 5px;
-        }
-
-        /* Button styling */
+        form input[type="text"],
+        form textarea,
+        form input[type="file"],
         form button {
-            width: 100%;
-            padding: 12px;
-            background-color: #00509e;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            font-size: 15px;
         }
-
-        form button:hover {
-            background-color: #004080;
-        }
-
-        /* Responsive design */
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-
-            form {
-                padding: 15px;
-            }
-
-            form h2 {
-                font-size: 20px;
-            }
-
-            form input[type="text"],
-            form textarea,
-            form input[type="file"],
-            form button {
-                font-size: 14px;
-            }
-
-            /* Ensuring inputs take full width on small screens */
-            form input[type="text"],
-            form textarea,
-            form input[type="file"] {
-                width: 100%;
-                box-sizing: border-box;
-            }
-        }
-
-        /* Improve spacing and form element width on larger screens */
-        @media (min-width: 600px) and (max-width: 1024px) {
-            form {
-                padding: 25px;
-            }
-
-            form input[type="text"],
-            form textarea,
-            form input[type="file"],
-            form button {
-                font-size: 15px;
-            }
-        }
+    }
     </style>
 </head>
 

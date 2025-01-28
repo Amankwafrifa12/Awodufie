@@ -467,7 +467,7 @@ if (!isset($_SESSION['admin_id'])) {
 
             <div class="card" onclick="location.href='edit-about.php'">
 
-                <i class="fas fa-pencil-alt"></i>
+                <i class="fas fa-edit"></i>
 
                 <h3>Edit About Section</h3>
 
@@ -485,13 +485,15 @@ if (!isset($_SESSION['admin_id'])) {
 
             </div>
 
-            <div class="card" onclick="location.href='add-post.php'">
 
-                <i class="fas fa-pencil-alt"></i>
 
-                <h3>Create a Post</h3>
+            <div class="card" onclick="location.href='edit-blog.php'">
 
-                <p>Click here to create a new post for your audience.</p>
+                <i class="fas fa-folder"></i>
+
+                <h3>Manage Post</h3>
+
+                <p>Click here to manage your posts</p>
 
             </div>
 

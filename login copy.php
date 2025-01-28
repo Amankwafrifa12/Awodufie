@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     // Database connection
-    $conn = new mysqli('localhost', 'root', '', 'blog_db');
+    $conn = new mysqli('localhost', 'ekrllius_awodufie', 'UEcd5KHWwvET4FY', 'ekrllius_awodufie');
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }

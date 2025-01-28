@@ -40,7 +40,11 @@ include("heading.php");
     <!-- Dynamic About Section -->
     <section id="about" class="about-section">
         <div class="about-text">
-            <h2><?php echo htmlspecialchars($about['name']); ?></h2>
+            <h2><?php echo htmlspecialchars($about['name']); ?>
+                <?php if (isset($_SESSION['admin_id'])) {
+                    echo '<a href="admin/edit-about.php"><i class="fa fa-edit"></i> </a>';
+                }
+                ?></h2>
 
             <p><?php echo nl2br(htmlspecialchars($about['description'])); ?></p>
 
@@ -65,7 +69,7 @@ include("heading.php");
             </div>
         </div>
         <div class="about-image">
-            <img src="<?php echo htmlspecialchars($about['image_url']); ?>" alt="About Me">
+            <img src="uploads/<?php echo htmlspecialchars($about['image_url']); ?>" alt="About Me">
         </div>
     </section>
 

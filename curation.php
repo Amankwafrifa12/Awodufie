@@ -78,6 +78,37 @@ include("header.php");
     font-weight: bold;
 }
 
+.admin-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.admin-actions a {
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.edit-button {
+    background-color: #4CAF50;
+}
+
+.delete-button {
+    background-color: #f44336;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}
+
+
 @media (max-width: 768px) {
     .blog-card {
         flex-direction: column;
@@ -125,11 +156,27 @@ include("header.php");
                 echo "<div class='meta'>Published on " . $post['created_at'] . " by " . htmlspecialchars($post['author']) . "</div>";
 
                 // Apply nl2br and htmlspecialchars to handle line breaks and special characters
-                $content = nl2br(htmlspecialchars($post['content']));
-                // Limit the content to 500 characters for preview, adding ellipsis
-                echo "<p>" . substr($content, 0, 500) . (strlen($content) > 500 ? "..." : "") . "</p>";
+                $content = htmlspecialchars($post['content']); // Escape HTML for safety
 
+                // Replace *text* with <b>text</b>
+                $content = preg_replace('/\*(.*?)\*/', '<b>$1</b>', $content);
+
+                // Replace _text_ with <i>text</i>
+                $content = preg_replace('/_(.*?)_/', '<i>$1</i>', $content);
+
+                // Convert newlines to <br> for proper line breaks
+                $content = nl2br($content);
+                echo "<p>" . substr($content, 0, 500) . (strlen($content) > 500 ? "..." : "") . "</p>";
                 echo "<a href='single-post.php?id=" . $post['id'] . "'>Read More</a>";
+                // Admin actions
+                if (isset($_SESSION['admin_id'])) {
+                    echo "<div class='admin-actions'>";
+                    echo "<a href='admin/edit-post.php?id=" . $post['id'] . "' class='edit-button'><i class='fas fa-edit'></i> Edit</a>";
+                    echo "<a href='admin/delete-post.php?id=" . $post['id'] . "' class='delete-button' onclick='return confirm(\"Are you sure you want to delete this post?\")'><i class='fas fa-trash-alt'></i> Delete</a>";
+                    echo "</div>";
+                }
+
+
                 echo "</div>"; // Close blog-details div
                 echo "</div>"; // Close blog-card div
             }

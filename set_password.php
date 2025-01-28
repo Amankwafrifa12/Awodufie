@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
         // Database connection
-        $conn = new mysqli('localhost', 'root', '', 'blog_db');
+        $conn = new mysqli('localhost', 'ekrllius_awodufie', 'UEcd5KHWwvET4FY', 'ekrllius_awodufie');
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -47,89 +47,89 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Set New Password</title>
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-            color: #333333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f9f9f9;
+        color: #333333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
+    .password-container {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .password-container h2 {
+        margin-bottom: 1.5rem;
+        color: #003366;
+    }
+
+    .password-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .password-container input {
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .password-container button {
+        padding: 0.8rem 1.5rem;
+        background-color: #003366;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+    }
+
+    .password-container button:hover {
+        background-color: #00509e;
+    }
+
+    .error {
+        color: red;
+        margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
         .password-container {
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
+            padding: 1.5rem;
         }
 
         .password-container h2 {
-            margin-bottom: 1.5rem;
-            color: #003366;
-        }
-
-        .password-container form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            font-size: 1.5rem;
         }
 
         .password-container input {
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
+            padding: 0.7rem;
         }
 
         .password-container button {
-            padding: 0.8rem 1.5rem;
-            background-color: #003366;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
+            padding: 0.7rem 1.2rem;
         }
-
-        .password-container button:hover {
-            background-color: #00509e;
-        }
-
-        .error {
-            color: red;
-            margin-top: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .password-container {
-                padding: 1.5rem;
-            }
-
-            .password-container h2 {
-                font-size: 1.5rem;
-            }
-
-            .password-container input {
-                padding: 0.7rem;
-            }
-
-            .password-container button {
-                padding: 0.7rem 1.2rem;
-            }
-        }
+    }
     </style>
 </head>
 
@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit">Set Password</button>
         </form>
         <?php if ($error): ?>
-            <p class="error"><?php echo $error; ?></p>
+        <p class="error"><?php echo $error; ?></p>
         <?php endif; ?>
     </div>
 </body>

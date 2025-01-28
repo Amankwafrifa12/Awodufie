@@ -41,7 +41,17 @@ include("header.php");
             echo "<h2 class='post-title'>" . htmlspecialchars($post['title']) . "</h2>";
 
             // Display the full content
-            $content = nl2br(htmlspecialchars($post['content']));
+            $content = htmlspecialchars($post['content']); // Escape HTML for safety
+
+            // Replace *text* with <b>text</b>
+            $content = preg_replace('/\*(.*?)\*/', '<b>$1</b>', $content);
+
+            // Replace _text_ with <i>text</i>
+            $content = preg_replace('/_(.*?)_/', '<i>$1</i>', $content);
+
+            // Convert newlines to <br> for proper line breaks
+            $content = nl2br($content);
+
             echo "<p>" . $content . "</p>";
         } else {
             echo "<p>Post not found.</p>";
