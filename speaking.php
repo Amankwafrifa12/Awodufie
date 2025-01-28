@@ -120,7 +120,7 @@ include("heading.php");
 
     <!-- Audio Section -->
     <section class="audio-section">
-        <h2 class="section-title">Audio Resources</h2>
+        <h2 class="section-title">Radio Interviews</h2>
         <div class="audio-list">
             <div class="audio-item">
                 <h1>Enough 2024: Anti-Queer Laws in Uganda, Ghana and Nigeria: Resistance and Resilience</h1>
