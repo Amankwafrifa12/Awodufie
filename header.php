@@ -23,7 +23,7 @@
 
             <li><a href="index.php#research">Research</a></li>
 
-            <li><a href="curation.php#curation">Curation</a></li>
+            <li><a href="curation.php">Curation</a></li>
 
             <li><a href="assets/resume.pdf" target="_blank">CV</a></li>
 

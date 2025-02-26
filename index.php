@@ -2,25 +2,64 @@
 include("heading.php");
 ?>
 
-<title>Awo Dufie - Activist & Researcher</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Awo Dufie",
-    "description": "Explore Awo Dufie's projects, services, and research portfolio. Dedicated to advocating for justice, equality, and freedom worldwide.",
-    "url": "https://awodufie.com/"
-    "logo": "https://awodufie.com/img/awo-dufie.jpg"
-}
-</script>
+    <?php
+    $pageTitle = "Awo Dufie - Human Rights Activist & Researcher";
+    $pageDescription = "Explore Awo Dufie's advocacy, research, and projects on justice, equality, and human rights. Connect for speaking engagements, writings, and curated content.";
+    $pageImage = "https://awodufie.com/img/awo-dufie.jpg";
+    $canonicalURL = "https://awodufie.com/";
+    ?>
 
-<style>
+    <title><?php echo $pageTitle; ?></title>
+    <link rel="canonical" href="<?php echo $canonicalURL; ?>">
+    <meta name="robots" content="index, follow">
 
-</style>
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="<?php echo $pageDescription; ?>">
+    <meta name="keywords"
+        content="Awo Dufie, human rights, activism, research, social justice, gender equality, LGBTIQ+ advocacy, public speaking, writer">
+    <meta name="author" content="Awo Dufie">
 
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Open Graph (Facebook & LinkedIn) -->
+    <meta property="og:title" content="<?php echo $pageTitle; ?>">
+    <meta property="og:description" content="<?php echo $pageDescription; ?>">
+    <meta property="og:image" content="<?php echo $pageImage; ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo $canonicalURL; ?>">
 
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo $pageTitle; ?>">
+    <meta name="twitter:description" content="<?php echo $pageDescription; ?>">
+    <meta name="twitter:image" content="<?php echo $pageImage; ?>">
+
+    <!-- Structured Data (Schema Markup) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Awo Dufie",
+            "description": "<?php echo $pageDescription; ?>",
+            "url": "<?php echo $canonicalURL; ?>",
+            "image": "<?php echo $pageImage; ?>",
+            "sameAs": [
+                "<?php echo htmlspecialchars($about['twitter_link']); ?>",
+                "<?php echo htmlspecialchars($about['linkedin_link']); ?>",
+                "<?php echo htmlspecialchars($about['instagram_link']); ?>",
+                "<?php echo htmlspecialchars($about['youtube_link']); ?>"
+            ]
+        }
+    </script>
+
+    <link rel="icon" href="https://awodufie.com/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/all-style.css">
+    <link rel="stylesheet" href="css/blog.css">
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 
