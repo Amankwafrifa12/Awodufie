@@ -3,31 +3,7 @@ include("heading.php");
 include("header.php");
 include 'includes/db.php';
 
-$title_slug = isset($_GET['title']) ? $_GET['title'] : '';
 
-$stmt = $conn->query("SELECT * FROM posts");
-$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$post = null;
-foreach ($posts as $p) {
-    $generated_slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $p['title']), '-'));
-    if ($generated_slug === $title_slug) {
-        $post = $p;
-        break;
-    }
-}
-
-if (!$post) {
-    $pageTitle = "Awodufie - Curation";
-    $pageDescription = "The requested post could not be found.";
-    $pageImage = "https://awodufie.com/img/default-image.jpg";
-    $canonicalURL = "https://awodufie.com/blogs.php";
-} else {
-    $pageTitle = htmlspecialchars($post['title']);
-    $pageDescription = htmlspecialchars(substr(strip_tags($post['content']), 0, 150)) . "...";
-    $pageImage = !empty($post['image_url']) ? htmlspecialchars($post['image_url']) : "https://awodufie.com/img/default-image.jpg";
-    $canonicalURL = "https://awodufie.com/blogs.php?title=" . urlencode($title_slug);
-}
 ?>
 
 <!DOCTYPE html>
@@ -36,153 +12,204 @@ if (!$post) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="alternate" href="https://awodufie.com" hreflang="en-us">
 
-    <meta name="robots" content="index, follow">
+    <?php
+    $pageTitle = "Awo Dufie – Curation & Blog";
+    $pageDescription = "Discover curated articles, insights, and reflections on gender, identity, art, and activism from Awo Dufie's blog.";
+    $pageImage = "https://awodufie.com/img/curation-feature.jpg"; // Update with an actual feature image
+    $canonicalURL = "https://awodufie.com/curation.php";
+    ?>
+
+    <title><?php echo $pageTitle; ?></title>
     <link rel="canonical" href="<?php echo $canonicalURL; ?>">
+    <meta name="robots" content="index, follow">
 
+    <!-- Primary Meta Tags -->
     <meta name="description" content="<?php echo $pageDescription; ?>">
-    <meta name="keywords" content="Awo Dufie, human rights, activism, advocacy, research, justice, equality">
+    <meta name="keywords"
+        content="Awo Dufie, curation, blog, African literature, gender studies, activism, identity, culture, art">
     <meta name="author" content="Awo Dufie">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph (Facebook & LinkedIn) -->
     <meta property="og:title" content="<?php echo $pageTitle; ?>">
     <meta property="og:description" content="<?php echo $pageDescription; ?>">
     <meta property="og:image" content="<?php echo $pageImage; ?>">
-    <meta property="og:type" content="article">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo $canonicalURL; ?>">
 
-    <!-- Twitter -->
+    <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo $pageTitle; ?>">
     <meta name="twitter:description" content="<?php echo $pageDescription; ?>">
     <meta name="twitter:image" content="<?php echo $pageImage; ?>">
 
-    <meta property="og:type" content="website">
-    <link rel="icon" href="https://awodufie.com/favicon/favicon.ico" type="image/x-icon">
-
+    <!-- Structured Data (Schema Markup) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "headline": "<?php echo $pageTitle; ?>",
+        "description": "<?php echo $pageDescription; ?>",
+        "image": "<?php echo $pageImage; ?>",
+        "url": "<?php echo $canonicalURL; ?>",
+        "author": {
+            "@type": "Person",
+            "name": "Awo Dufie",
+            "url": "https://awodufie.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Awo Dufie",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://awodufie.com/favicon/favicon.ico"
+            }
+        },
+        "blogPost": [
+            <?php
+                $stmt = $conn->query("SELECT * FROM posts ORDER BY created_at DESC LIMIT 5");
+                while ($post = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $post['title']), '-'));
+                    echo '{
+                    "@type": "BlogPosting",
+                    "headline": "' . htmlspecialchars($post['title']) . '",
+                    "author": {
+                        "@type": "Person",
+                        "name": "' . htmlspecialchars($post['author']) . '"
+                    },
+                    "datePublished": "' . $post['created_at'] . '",
+                    "url": "https://awodufie.com/blogs.php?title=' . $slug . '"
+                },';
+                }
+                ?>
+        ]
+    }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/all-style.css">
     <link rel="stylesheet" href="css/blog.css">
-    <title><?php echo $pageTitle; ?></title>
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="icon" href="https://awodufie.com/favicon/favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
+
 <style>
-    /* Blog Section Styling */
-    .blogs-section {
-        padding: 2rem;
-        background-color: #ffffff;
-        color: #003366;
-    }
+/* Blog Section Styling */
+.blogs-section {
+    padding: 2rem;
+    background-color: #ffffff;
+    color: #003366;
+}
 
-    .blogs-section h2 {
-        margin-bottom: 1.5rem;
-        font-size: 2rem;
-        text-align: center;
-    }
+.blogs-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
+}
 
-    .blogs-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-    }
+.blogs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
 
+.blog-card {
+    display: flex;
+    flex: 1 1 100%;
+    background-color: #f0f8ff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.blog-card:hover {
+    transform: scale(1.02);
+}
+
+.blog-image {
+    flex: 1 1 30%;
+    max-width: 30%;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-details {
+    flex: 1 1 70%;
+    padding: 1rem;
+}
+
+.blog-details h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.blog-details p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.blog-details .meta {
+    font-size: 0.8rem;
+    color: #666666;
+    margin-bottom: 0.5rem;
+}
+
+.blog-details a {
+    color: #003366;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.admin-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.admin-actions a {
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.edit-button {
+    background-color: #4CAF50;
+}
+
+.delete-button {
+    background-color: #f44336;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}
+
+@media (max-width: 768px) {
     .blog-card {
-        display: flex;
-        flex: 1 1 100%;
-        background-color: #f0f8ff;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-        transition: transform 0.3s;
-    }
-
-    .blog-card:hover {
-        transform: scale(1.02);
+        flex-direction: column;
     }
 
     .blog-image {
-        flex: 1 1 30%;
-        max-width: 30%;
-    }
-
-    .blog-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        flex: 1 1 100%;
+        max-width: 100%;
     }
 
     .blog-details {
-        flex: 1 1 70%;
-        padding: 1rem;
+        flex: 1 1 100%;
     }
-
-    .blog-details h3 {
-        margin-bottom: 0.5rem;
-        font-size: 1.25rem;
-    }
-
-    .blog-details p {
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .blog-details .meta {
-        font-size: 0.8rem;
-        color: #666666;
-        margin-bottom: 0.5rem;
-    }
-
-    .blog-details a {
-        color: #003366;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .admin-actions {
-        margin-top: 1rem;
-        display: flex;
-        gap: 1rem;
-    }
-
-    .admin-actions a {
-        padding: 0.5rem 1rem;
-        color: #ffffff;
-        border-radius: 5px;
-        text-decoration: none;
-        font-size: 0.9rem;
-    }
-
-    .edit-button {
-        background-color: #4CAF50;
-    }
-
-    .delete-button {
-        background-color: #f44336;
-    }
-
-    .edit-button:hover {
-        background-color: #45a049;
-    }
-
-    .delete-button:hover {
-        background-color: #d32f2f;
-    }
-
-    @media (max-width: 768px) {
-        .blog-card {
-            flex-direction: column;
-        }
-
-        .blog-image {
-            flex: 1 1 100%;
-            max-width: 100%;
-        }
-
-        .blog-details {
-            flex: 1 1 100%;
-        }
-    }
+}
 </style>
 
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
